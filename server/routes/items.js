@@ -12,4 +12,38 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// CREATE /item
+app.post('/items', async (req, res) => {
+  const { name, price, description, category, image } = req.body;
+  const items = await Item.create({ name, price, description, category, image });
+  res.json(items);
+});
+
+// DELETE /item
+app.delete('/items/:id', async (req, res) => {
+  const items = await Item.findByPk(req.params.id);
+  if (!items) {
+    return res.status(404).send('Item not found');
+  }
+  await items.destroy();
+  res.send('Item deleted');
+});
+
+
+// UPDATE /item
+app.put('/items/:id', async (req, res) => {
+  const items = await Item.findByPk(req.params.id);
+  if (!items) {
+    return res.status(404).send('Item not found');
+  }
+  items.name = req.body.name;
+  items.price = req.body.price;
+  items.description = req.body.description;
+  items.category = req.body.category;
+  items.image = req.body.image;
+  await items.save();
+  res.send(items);
+});
+
+
 module.exports = router;
