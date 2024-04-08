@@ -17,4 +17,5 @@ const Item = sequelize.define("items", {
 module.exports = {
   db: sequelize,
   Sauce,
+  Item,
 };
