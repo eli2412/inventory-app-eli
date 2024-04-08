@@ -24,14 +24,14 @@ router.get("/:id", async (req, res, next) => {
 })
 
 // CREATE /item
-app.post('/items', async (req, res) => {
+router.post('/items', async (req, res) => {
   const { name, price, description, category, image } = req.body;
   const items = await Item.create({ name, price, description, category, image });
   res.json(items);
 });
 
 // DELETE /item
-app.delete('/items/:id', async (req, res) => {
+router.delete('/items/:id', async (req, res) => {
   const items = await Item.findByPk(req.params.id);
   if (!items) {
     return res.status(404).send('Item not found');
@@ -42,7 +42,7 @@ app.delete('/items/:id', async (req, res) => {
 
 
 // UPDATE /item
-app.put('/items/:id', async (req, res) => {
+router.put('/items/:id', async (req, res) => {
   const items = await Item.findByPk(req.params.id);
   if (!items) {
     return res.status(404).send('Item not found');
