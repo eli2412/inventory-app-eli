@@ -1,12 +1,9 @@
-import React from 'react';
-import { Item } from './Item';
-
-export const ItemsList = ({items}) => {
+export const ItemsList = ({items, onTitleClick}) => {
 	return <>
 		{
 			items.map((item, idx) => {
-				return <Item item={item} key={idx} />
+				return <button key={idx} onClick={() => onTitleClick(item.id)}>{item.name}</button>
 			})
 		}
 	</>
-} 
+}
