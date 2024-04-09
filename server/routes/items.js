@@ -24,14 +24,18 @@ router.get("/:id", async (req, res, next) => {
 })
 
 // CREATE /item
-router.post('/items', async (req, res) => {
+router.post('/', async (req, res,next) => {
+ try { 
   const { name, price, description, category, image } = req.body;
   const items = await Item.create({ name, price, description, category, image });
   res.json(items);
+ } catch(error){
+  next(error)
+ }
 });
 
 // DELETE /item
-router.delete('/items/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const items = await Item.findByPk(req.params.id);
   if (!items) {
     return res.status(404).send('Item not found');
@@ -42,7 +46,7 @@ router.delete('/items/:id', async (req, res) => {
 
 
 // UPDATE /item
-router.put('/items/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   const items = await Item.findByPk(req.params.id);
   if (!items) {
     return res.status(404).send('Item not found');
