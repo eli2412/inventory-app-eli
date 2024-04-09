@@ -3,7 +3,7 @@ import React, { useEffect, useState} from 'react';
 export const Item = (props) => {
 
   const [pageView, setPageView] = useState(false)
-  const [item, setItemData ] = useState({})
+  const [items, setItemData ] = useState({})
 
   function handleClick() {
     setPageView(!pageView)
@@ -30,7 +30,7 @@ export const Item = (props) => {
   
   async function fetchItems () {
     try {
-      const response = await fetch(`${apiURL}/items/:id`)
+      const response = await fetch(`${apiURL}/:id`)
       const itemData = await response.json()
       console.log(itemData)
       setItemData(itemData)

@@ -3,7 +3,7 @@ const router = express.Router();
 const { Item } = require("../models");
 
 // GET /item
-router.get("/items", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const items = await Item.findAll();
     res.send(items);
@@ -11,7 +11,7 @@ router.get("/items", async (req, res, next) => {
     next(error);
   }
 });
-router.get("/items/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
       const items = await Item.findByPk(req.params.id);
       if (!items) {
