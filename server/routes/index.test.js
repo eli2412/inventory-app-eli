@@ -20,4 +20,24 @@ describe("GET /items", ()=> {
     expect(response.status).toBe(200);
     expect(response.body).toBeDefined();
   })
+  it('deletes an item', async()=>{
+    const newItem = await Item.create({
+      name:"Tabby 24 Coach Bag",
+      price: 500, 
+      category:"Purse", 
+      description:"this is a coach bad",
+      image: "https://m.media-amazon.com/images/I/51IVI1u5mFL._AC_UY1000_.jpg"
+  })
+      const itemId = newItem.id;
+
+      await Item.destroy({
+        where:{
+          id:itemId
+        }
+      });
+
+      const deletedItem = await Item.findByPk(itemId);
+
+      expect(deletedItem).toBe(null)
+  })
 })
