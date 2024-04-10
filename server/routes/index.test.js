@@ -25,7 +25,7 @@ describe("GET /items", ()=> {
       name:"Tabby 24 Coach Bag",
       price: 500, 
       category:"Purse", 
-      description:"this is a coach bad",
+      description:"this is a coach bag",
       image: "https://m.media-amazon.com/images/I/51IVI1u5mFL._AC_UY1000_.jpg"
   })
       const itemId = newItem.id;
@@ -39,5 +39,29 @@ describe("GET /items", ()=> {
       const deletedItem = await Item.findByPk(itemId);
 
       expect(deletedItem).toBe(null)
+  })
+  it("should update an item", async()=>{
+    const newItem = await Item.create({
+      name:"Tabby 24 Coach Bag",
+      price: 500, 
+      category:"Purse", 
+      description:"this is a coach bag",
+      image: "https://m.media-amazon.com/images/I/51IVI1u5mFL._AC_UY1000_.jpg"
+  })
+  const itemId = newItem.id;
+  const updatedItem = {
+    name:" Coach tote Bag",
+    price: 400, 
+    category:"Purse", 
+    description:"this is a coach bag",
+    image: "https://m.media-amazon.com/images/I/51IVI1u5mFL._AC_UY1000_.jpg"
+  }
+
+ const itemToUpdate = await Item.findByPk(itemId);
+ Object.assign(itemToUpdate, updatedItem)
+ await itemToUpdate.save();
+ const newUpdatedItem = await Item.findByPk(itemId)
+
+ expect(newUpdatedItem.name).toEqual(updatedItem.name)
   })
 })
