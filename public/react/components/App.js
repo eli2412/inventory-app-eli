@@ -32,6 +32,16 @@ export const App = () => {
 		console.log('Oh no an error! ', err)
 	  }
 	}
+async function onDelete(slug){
+	try{
+		const res = await fetch (`${apiURL}/items/${slug}`,{
+			method:"DELETE"
+		})
+	}
+		catch(error){
+			console.log('can not delete',error)
+		}
+	}
 
 	useEffect(() => {
 		fetchItems();
@@ -43,7 +53,9 @@ export const App = () => {
 	function handleBack() {
 		setSelItem(null)
 	  }
-
+	async function deleteItem(item){
+			await onDelete(item.id);
+	}
 	return (
 		<main>	
       <h1>Item Store</h1>
@@ -56,10 +68,12 @@ export const App = () => {
     <h5>Description: {selItem.description}</h5>
 	<img src={selItem.image} alt={selItem.name} />
 	<button onClick={handleBack}>Back to Item Shop</button>
+	<button onClick= {() => deleteItem(selItem)} >Delete Item</button>
 						  </div>
 			) : (
 				<>
 				<ItemsList items={items} onTitleClick={handleItemClick} />
+			
 				<Form data={data} setData={setData}/>
 				</>
 			)}
