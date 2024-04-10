@@ -26,6 +26,13 @@ function Form() {
         body: JSON.stringify(newItemForm)
         })
 
+        await fetch(`${apiURL}/items`, {
+          method: "PUT",
+          headers: {"Content-type":
+        "application/json"},
+        body: JSON.stringify(newItemForm)
+      })
+
         setName("");
         setPrice("");
         setCategory("");
