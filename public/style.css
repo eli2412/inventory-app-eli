@@ -3,3 +3,30 @@
   box-sizing: border-box;
   background-color: rgb(223, 223, 223);
 }
+
+.item-detail {
+  font-family: "Tahoma";
+}
+h1 {
+  font-family: "Brush Script MT";
+  font-size: 60px;
+}
+h2 {
+  font-family: "Brush Script MT";
+  font-size: 50px;
+}
+img {
+  width: 400px;
+  height: 400px;
+}
+button {
+  font-family: "Courier New";
+  font-size: 15px;
+  font-weight: bold;
+}
+.formStyle {
+  font-family: "Courier New";
+  font-size: 15px;
+  font-weight: bold;
+}
+
