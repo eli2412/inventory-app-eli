@@ -41,6 +41,7 @@ function Form() {
     }
     return (
     <>
+    <div className="formStyle">
         <form onSubmit={submitForm}>
         <label>
           Name of Item:
@@ -63,6 +64,7 @@ function Form() {
         </label>
         <button type="submit">Submit form</button>
          </form>
+         </div>
         </>
     )
     };

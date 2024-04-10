@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ItemsList } from './ItemsList'
-import { SaucesList } from './SaucesList';
 import Form from './form';
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
@@ -61,7 +60,7 @@ async function onDelete(slug){
       <h1>Item Store</h1>
 			<h2>All things 🔥</h2>
 			{selItem ? (
-				<div>
+				<div className="item-detail">
     <h3>Name: {selItem.name}</h3>
     <h4>Price: {selItem.price}</h4>
     <h4>Category: {selItem.category}</h4>
