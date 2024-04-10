@@ -52,14 +52,14 @@ function Form() {
           <input type="number" onChange={(e) => setPrice(e.target.value)} placeholder="Price"/>
         </label>
         <label>
-          Description: <input value= {description} onChange={(e) => setDescription(e.target.value)} placeholder="description of item" />
+          Description: <input value= {description} onChange={(e) => setDescription(e.target.value)} placeholder="Description of item" />
         </label>
         <label>
-          Category: <input value ={ category} onChange={(e) => setCategory(e.target.value)}placeholder="category of item" />
+          Category: <input value ={ category} onChange={(e) => setCategory(e.target.value)}placeholder="Category of item" />
         </label>
             
         <label>
-          Image: <input value = {image} onChange={(e) => setImage(e.target.value)} placeholder="image of itrms" />
+          Image: <input value = {image} onChange={(e) => setImage(e.target.value)} placeholder="Image of items" />
         </label>
         <button type="submit">Submit form</button>
          </form>
