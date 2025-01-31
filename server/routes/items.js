@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Item } = require("../models");
+const authenticate = require("../middleware/auth");
 
 // GET /item
 router.get("/", async (req, res, next) => {
@@ -58,6 +59,16 @@ router.put('/:id', async (req, res) => {
   items.image = req.body.image;
   await items.save();
   res.send(items);
+});
+
+router.post("/", authenticate, async (req, res, next) => {
+  try {
+    const { name, price, description, category, image } = req.body;
+    const items = await Item.create({ name, price, description, category, image });
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
 });
 
 
